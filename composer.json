@@ -13,5 +13,5 @@
     },
     "autoload": {
         "psr-4": {"ahb360\\kalpok\\": ""}
-    },
+    }
 }
