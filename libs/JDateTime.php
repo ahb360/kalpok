@@ -1,5 +1,5 @@
 <?php
-namespace core\libs;
+namespace kalpok\libs;
 
 use DateTime;
 use DateTimeZone;

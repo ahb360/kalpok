@@ -1,8 +1,8 @@
 <?php
-namespace core\components;
+namespace kalpok\components;
 
 use Yii;
-use core\modules\setting\models\Setting as SettingModel;
+use kalpok\modules\setting\models\Setting as SettingModel;
 
 class Setting
 {

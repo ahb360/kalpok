@@ -1,7 +1,7 @@
 <?php
-namespace core\console;
+namespace kalpok\console;
 
-use core\rbac\UserTypeRule;
+use kalpok\rbac\UserTypeRule;
 
 class RbacController extends \yii\console\Controller
 {

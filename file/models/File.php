@@ -1,12 +1,12 @@
 <?php
-namespace core\file\models;
+namespace kalpok\file\models;
 
 use Yii;
-use core\helpers\FileHelper;
+use kalpok\helpers\FileHelper;
 use yii\helpers\StringHelper;
 use yii\validators\FileValidator;
 use yii\base\InvalidParamException;
-use core\behaviors\TimestampBehavior;
+use kalpok\behaviors\TimestampBehavior;
 
 class File extends \yii\db\ActiveRecord
 {

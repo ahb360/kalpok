@@ -1,5 +1,5 @@
 <?php
-namespace core\i18n;
+namespace kalpok\i18n;
 
 use Yii;
 use DateTimeZone;

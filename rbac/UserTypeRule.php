@@ -1,9 +1,9 @@
 <?php
-namespace core\rbac;
+namespace kalpok\rbac;
 
 use Yii;
 use yii\rbac\Rule;
-use core\modules\user\common\models\User;
+use kalpok\modules\user\common\models\User;
 
 class UserTypeRule extends Rule
 {

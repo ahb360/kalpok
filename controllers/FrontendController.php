@@ -1,26 +1,26 @@
 <?php
 
-namespace core\controllers;
+namespace kalpok\controllers;
 
 use Yii;
 use yii\web\Controller;
 
 class FrontendController extends Controller
 {
-    public $layout = '@core/views/frontend/layouts/main.php';
+    public $layout = '@app/views/frontend/layouts/main.php';
 
     public function actions()
     {
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
-                'view' => '@core/views/frontend/error.php'
+                'view' => '@app/views/frontend/error.php'
             ],
         ];
     }
 
     public function actionIndex()
     {
-        return $this->render('@core/views/frontend/index.php');
+        return $this->render('@app/views/frontend/index.php');
     }
 }

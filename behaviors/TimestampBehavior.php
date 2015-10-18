@@ -1,5 +1,5 @@
 <?php
-namespace core\behaviors;
+namespace kalpok\behaviors;
 
 class TimestampBehavior extends \yii\behaviors\TimestampBehavior
 {

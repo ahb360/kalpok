@@ -1,5 +1,5 @@
 <?php
-namespace core\helpers;
+namespace kalpok\helpers;
 
 class FileHelper extends \yii\helpers\FileHelper
 {

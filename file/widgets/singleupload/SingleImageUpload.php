@@ -1,5 +1,5 @@
 <?php
-namespace core\file\widgets\singleupload;
+namespace kalpok\file\widgets\singleupload;
 
 use Yii;
 

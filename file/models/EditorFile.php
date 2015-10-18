@@ -1,9 +1,9 @@
 <?php
-namespace core\file\models;
+namespace kalpok\file\models;
 
 use yii;
 use yii\web\UploadedFile;
-use core\helpers\FileHelper;
+use kalpok\helpers\FileHelper;
 
 class EditorFile extends File
 {

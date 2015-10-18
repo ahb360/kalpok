@@ -1,5 +1,5 @@
 <?php
-namespace core\helpers;
+namespace kalpok\helpers;
 
 use Yii;
 

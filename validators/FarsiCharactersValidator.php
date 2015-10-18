@@ -1,5 +1,5 @@
 <?php
-namespace core\validators;
+namespace kalpok\validators;
 
 use yii;
 use yii\validators\Validator;

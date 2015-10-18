@@ -1,11 +1,11 @@
 <?php
-namespace core\file\behaviors;
+namespace kalpok\file\behaviors;
 
 use yii;
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
 use yii\web\UploadedFile;
-use core\file\models\File;
+use kalpok\file\models\File;
 use yii\base\InvalidParamException;
 
 class FileBehavior extends Behavior

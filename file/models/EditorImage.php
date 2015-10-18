@@ -1,5 +1,5 @@
 <?php
-namespace core\file\models;
+namespace kalpok\file\models;
 
 use yii;
 

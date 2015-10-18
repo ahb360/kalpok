@@ -1,5 +1,5 @@
 <?php
-namespace core\grid;
+namespace kalpok\grid;
 
 use yii\helpers\Html;
 use yii\grid\DataColumn;

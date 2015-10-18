@@ -1,6 +1,6 @@
 <?php
 
-namespace core\controllers;
+namespace kalpok\controllers;
 
 use Yii;
 use yii\web\Controller;
@@ -30,13 +30,13 @@ class BackendController extends Controller
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
-                'view' => '@core/views/backend/error.php'
+                'view' => '@app/views/backend/error.php'
             ],
         ];
     }
 
     public function actionIndex()
     {
-        return $this->render('@core/views/backend/index.php');
+        return $this->render('@app/views/backend/index.php');
     }
 }

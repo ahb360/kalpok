@@ -1,12 +1,12 @@
 <?php
-namespace core\file\widgets\singleupload;
+namespace kalpok\file\widgets\singleupload;
 
 use Yii;
 use yii\web\View;
 use yii\helpers\Url;
-use core\file\models\File;
+use kalpok\file\models\File;
 use yii\base\InvalidParamException;
-use core\file\behaviors\FileBehavior;
+use kalpok\file\behaviors\FileBehavior;
 
 class FileUpload extends \yii\base\Widget
 {

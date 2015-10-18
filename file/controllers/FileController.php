@@ -1,15 +1,15 @@
 <?php
 
-namespace core\file\controllers;
+namespace kalpok\file\controllers;
 
 use Yii;
 use yii\helpers\Json;
 use yii\imagine\Image;
 use yii\web\UploadedFile;
-use core\file\models\File;
-use core\helpers\FileHelper;
-use core\file\models\EditorFile;
-use core\file\models\EditorImage;
+use kalpok\file\models\File;
+use kalpok\helpers\FileHelper;
+use kalpok\file\models\EditorFile;
+use kalpok\file\models\EditorImage;
 use yii\web\NotFoundHttpException;
 
 class FileController extends \yii\web\Controller

@@ -1,9 +1,9 @@
 <?php
-namespace core\components;
+namespace kalpok\components;
 
 use Yii;
 use yii\base\Component;
-use core\libs\JDateTime;
+use kalpok\libs\JDateTime;
 use yii\base\InvalidParamException;
 
 class Date extends Component
