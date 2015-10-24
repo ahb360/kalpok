@@ -1,6 +1,6 @@
 <?php
 
-namespace kalpok\web;
+namespace kalpok\controllers;
 
 use Yii;
 use yii\web\Controller;
