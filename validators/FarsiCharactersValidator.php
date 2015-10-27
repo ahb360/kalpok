@@ -18,13 +18,13 @@ class FarsiCharactersValidator extends Validator
     private function calledFromBackendAndNeedsConvert()
     {
         // TODO
-        return Yii::$app->params['application'] == 'backend';
+        return Yii::$app->params['app'] == 'backend';
             // and Yii::$app->user->activeWebsite->language == 'fa';
     }
 
     private function calledFromFrontendAndNeedsConvert()
     {
-        return Yii::$app->params['application'] == 'frontend'
+        return Yii::$app->params['app'] == 'frontend'
             and Yii::$app->language == 'fa';
     }
 }
