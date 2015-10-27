@@ -9,7 +9,8 @@
     "type": "library",
     "license": "BSD-3-Clause",
     "require": {
-        "yiisoft/yii2": ">=2.0.4"
+        "yiisoft/yii2": ">=2.0.4",
+        "sallar/jdatetime": "dev-master"
     },
     "autoload": {
         "psr-4": {"kalpok\\": ""}
