@@ -8,11 +8,18 @@ use yii\base\InvalidParamException;
 
 class Date extends Component
 {
-    public function date($format, $stamp = false, $convert = null, $jalali = null, $timezone = null)
+    protected $jDate;
+
+    public function __construct(JDateTime $jDate)
+    {
+        $this->jDate = $jDate;
+    }
+
+    public function date($format, $stamp = false)
     {
         switch ($this->getCalendar()) {
             case 'jalali':
-                return JDateTime::date($format, $stamp, $convert, $jalali, $timezone);
+                return $this->jDate->date($format, $stamp);
             case 'hijri':
                 throw new \Exception("Hijri calendar is not supported yet");
             default:
@@ -20,11 +27,11 @@ class Date extends Component
         }
     }
 
-    public function mktime($hour, $minute, $second, $month, $day, $year, $jalali = null, $timezone = null)
+    public function mktime($hour, $minute, $second, $month, $day, $year)
     {
         switch ($this->getCalendar()) {
             case 'jalali':
-                return JDateTime::mktime($hour, $minute, $second, $month, $day, $year, $jalali, $timezone);
+                return $this->jDate->mktime($hour, $minute, $second, $month, $day, $year);
             case 'hijri':
                 throw new \Exception("Hijri calendar is not supported yet");
             default:
