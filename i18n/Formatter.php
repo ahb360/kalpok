@@ -11,6 +11,14 @@ class Formatter extends \yii\i18n\Formatter
     private $calendar;
     private $_intlLoaded = false;
 
+    protected $dateObject;
+
+    public function __construct(\kalpok\components\Date $dateObject, $config = [])
+    {
+        $this->dateObject = $dateObject;
+        parent::__construct($config);
+    }
+
     public function init()
     {
         parent::init();
@@ -78,6 +86,6 @@ class Formatter extends \yii\i18n\Formatter
                 $timestamp->setTimezone(new DateTimeZone($timeZone));
             }
         }
-        return Yii::$app->date->date($format, $timestamp->getTimestamp());
+        return $this->dateObject->date($format, $timestamp->getTimestamp());
     }
 }
