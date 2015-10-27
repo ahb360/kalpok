@@ -5,7 +5,7 @@ use yii\web\AssetBundle;
 
 class SingleUploadAsset extends AssetBundle
 {
-    public $sourcePath = '@core/file/widgets/singleupload/assets';
+    public $sourcePath = '@kalpok/file/widgets/singleupload/assets';
     public $css = [
         'styles.css',
     ];
