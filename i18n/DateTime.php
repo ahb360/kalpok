@@ -1,12 +1,10 @@
 <?php
-namespace kalpok\components;
+namespace kalpok\i18n;
 
-use Yii;
-use yii\base\Component;
 use kalpok\libs\JDateTime;
 use yii\base\InvalidParamException;
 
-class Date extends Component
+class DateTime
 {
     protected $jDate;
 
@@ -87,6 +85,6 @@ class Date extends Component
 
     private function getCalendar()
     {
-        return isset(Yii::$app->website) ? Yii::$app->website->calendar : 'jalali';
+        return isset(\Yii::$app->website) ? \Yii::$app->website->calendar : 'jalali';
     }
 }

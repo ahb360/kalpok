@@ -13,7 +13,7 @@ class Formatter extends \yii\i18n\Formatter
 
     protected $dateObject;
 
-    public function __construct(\kalpok\components\Date $dateObject, $config = [])
+    public function __construct(DateTime $dateObject, $config = [])
     {
         $this->dateObject = $dateObject;
         parent::__construct($config);
