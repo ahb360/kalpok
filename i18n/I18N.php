@@ -8,9 +8,17 @@ use yii\helpers\FormatConverter;
 
 class I18N extends \yii\i18n\I18N
 {
+    protected $language;
+
     private $farsiNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
     private $arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
     private $englishNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+    public function __construct(Language $language, $config = [])
+    {
+        $this->language = $language;
+        parent::__construct($config);
+    }
 
     /**
      * translates given number regarding to application language
@@ -19,10 +27,10 @@ class I18N extends \yii\i18n\I18N
      */
     public function translateNumber($number)
     {
-        if (Yii::$app->language == 'fa') {
+        if ($this->language->code == 'fa') {
             $number = str_replace($this->arabicNumbers, $this->farsiNumbers, $number);
             return str_replace($this->englishNumbers, $this->farsiNumbers, $number);
-        }elseif (Yii::$app->language == 'ar') {
+        }elseif ($this->language->code == 'ar') {
             $number = str_replace($this->farsiNumbers, $this->arabicNumbers, $number);
             return str_replace($this->englishNumbers, $this->arabicNumbers, $number);
         }else{
