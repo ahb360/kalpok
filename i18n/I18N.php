@@ -8,7 +8,9 @@ use yii\helpers\FormatConverter;
 
 class I18N extends \yii\i18n\I18N
 {
-    protected $language;
+    public $languages;
+
+    protected $activeLanguage;
 
     private $farsiNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
     private $arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
@@ -16,8 +18,24 @@ class I18N extends \yii\i18n\I18N
 
     public function __construct(Language $language, $config = [])
     {
-        $this->language = $language;
+        $this->activeLanguage = $language;
         parent::__construct($config);
+    }
+
+    public function isMultiLanguage()
+    {
+        return is_array($this->languages);
+    }
+
+    public function availableLanguages()
+    {
+        if (!$this->isMultiLanguage())
+            return [];
+
+        foreach ($this->languages as $language) {
+            $output[] = LanguageBuilder::build($language);
+        }
+        return $output;
     }
 
     /**
@@ -27,10 +45,10 @@ class I18N extends \yii\i18n\I18N
      */
     public function translateNumber($number)
     {
-        if ($this->language->code == 'fa') {
+        if ($this->activeLanguage->code == 'fa') {
             $number = str_replace($this->arabicNumbers, $this->farsiNumbers, $number);
             return str_replace($this->englishNumbers, $this->farsiNumbers, $number);
-        }elseif ($this->language->code == 'ar') {
+        }elseif ($this->activeLanguage->code == 'ar') {
             $number = str_replace($this->farsiNumbers, $this->arabicNumbers, $number);
             return str_replace($this->englishNumbers, $this->arabicNumbers, $number);
         }else{

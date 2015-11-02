@@ -3,9 +3,9 @@ namespace kalpok\i18n;
 
 class LanguageBuilder
 {
-    public static function build($applicationLanguage)
+    public static function build($code)
     {
-        switch ($applicationLanguage) {
+        switch ($code) {
             case 'fa':
                 return new Language('fa', 'فارسی', 'rtl');
             case 'en':
@@ -13,7 +13,7 @@ class LanguageBuilder
             case 'ar':
                 return new Language('ar', 'عربی', 'rtl');
             default:
-                throw new \Exception("Unknown Language Code");
+                throw new \Exception("Unknown Language Code: $code");
         }
     }
 }

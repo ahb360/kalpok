@@ -25,6 +25,14 @@ class Formatter extends \yii\i18n\Formatter
         $this->_intlLoaded = extension_loaded('intl');
     }
 
+    public function asLanguage($value)
+    {
+        if ($value == null)
+            return $this->nullDisplay;
+
+        return LanguageBuilder::build($value)->title;
+    }
+
     public function asDate($value, $format = null)
     {
         if ($this->calendar->code == 'gregorian') {
@@ -49,9 +57,9 @@ class Formatter extends \yii\i18n\Formatter
 
     public function asFarsiNumber($value)
     {
-        if ($value === null) {
+        if ($value === null)
             return $this->nullDisplay;
-        }
+
         return $this->i18n->translateNumber($value);
     }
 
