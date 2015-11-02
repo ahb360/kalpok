@@ -6,20 +6,22 @@ use yii\base\InvalidParamException;
 
 class DateTime
 {
+    protected $calendar;
     protected $jDate;
 
-    public function __construct(JDateTime $jDate)
+    public function __construct(Calendar $calendar, JDateTime $jDate)
     {
+        $this->calendar = $calendar;
         $this->jDate = $jDate;
     }
 
     public function date($format, $stamp = false)
     {
-        switch ($this->getCalendar()) {
+        switch ($this->calendar->code) {
             case 'jalali':
                 return $this->jDate->date($format, $stamp);
-            case 'hijri':
-                throw new \Exception("Hijri calendar is not supported yet");
+            case 'islamic':
+                throw new \Exception("Islamic calendar is not supported yet");
             default:
                 return date($format, $stamp);
         }
@@ -27,11 +29,11 @@ class DateTime
 
     public function mktime($hour, $minute, $second, $month, $day, $year)
     {
-        switch ($this->getCalendar()) {
+        switch ($this->calendar->code) {
             case 'jalali':
                 return $this->jDate->mktime($hour, $minute, $second, $month, $day, $year);
-            case 'hijri':
-                throw new \Exception("Hijri calendar is not supported yet");
+            case 'islamic':
+                throw new \Exception("Islamic calendar is not supported yet");
             default:
                 return mktime($hour, $minute, $second, $month, $day, $year);
         }
@@ -39,10 +41,10 @@ class DateTime
 
     public function strtotime($strdate, $format)
     {
-        switch ($this->getCalendar()) {
+        switch ($this->calendar->code) {
             case 'jalali':
                 return $this->jalaliStrtotime($strdate, $format);
-            case 'hijri':
+            case 'islamic':
                 return "";
             default:
                 return strtotime($strdate);
@@ -73,7 +75,7 @@ class DateTime
                 "Given date string: {$strdate}, is not in form of given format: {$format}", 1);
         }
         $pd = date_parse_from_format($format, $strdate);
-        return Yii::$app->date->mktime(
+        return $this->mktime(
             $pd['hour'],
             $pd['minute'],
             $pd['second'],
@@ -81,10 +83,5 @@ class DateTime
             $pd['day'],
             $pd['year']
         );
-    }
-
-    private function getCalendar()
-    {
-        return isset(\Yii::$app->website) ? \Yii::$app->website->calendar : 'jalali';
     }
 }

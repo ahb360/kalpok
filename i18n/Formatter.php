@@ -1,36 +1,33 @@
 <?php
 namespace kalpok\i18n;
 
-use Yii;
-use DateTimeZone;
-use aca\common\helpers\Utility;
 use yii\helpers\FormatConverter;
 
 class Formatter extends \yii\i18n\Formatter
 {
-    private $calendar;
+    protected $calendar;
+    protected $dateTime;
+    protected $i18n;
+
     private $_intlLoaded = false;
 
-    protected $dateObject;
-
-    public function __construct(DateTime $dateObject, $config = [])
+    public function __construct(Calendar $calendar, DateTime $dateTime, I18n $i18n, $config = [])
     {
-        $this->dateObject = $dateObject;
+        $this->calendar = $calendar;
+        $this->dateTime = $dateTime;
+        $this->i18n = $i18n;
         parent::__construct($config);
     }
 
     public function init()
     {
         parent::init();
-        // TODO calendar should be set from somewhere
-        $this->calendar = isset(Yii::$app->website) ? Yii::$app->website->calendar : 'jalali';
         $this->_intlLoaded = extension_loaded('intl');
     }
 
-    public function asDate($value, $format = null, $calendar = null)
+    public function asDate($value, $format = null)
     {
-        $calendar = $calendar ? $calendar : $this->calendar;
-        if (!$calendar || $calendar == 'gregorian') {
+        if ($this->calendar->code == 'gregorian') {
             return parent::asDate($value, $format);
         }
         if ($format === null) {
@@ -39,10 +36,9 @@ class Formatter extends \yii\i18n\Formatter
         return $this->formatDateTimeValue($value, $format, 'date');
     }
 
-    public function asDatetime($value, $format = null, $calendar = null)
+    public function asDatetime($value, $format = null)
     {
-        $calendar = $calendar ? $calendar : $this->calendar;
-        if (!$calendar || $calendar == 'gregorian') {
+        if ($this->calendar->code == 'gregorian') {
             return parent::asDatetime($value, $format);
         }
         if ($format === null) {
@@ -56,7 +52,7 @@ class Formatter extends \yii\i18n\Formatter
         if ($value === null) {
             return $this->nullDisplay;
         }
-        return Yii::$app->i18n->translateNumber($value);
+        return $this->i18n->translateNumber($value);
     }
 
     private function formatDateTimeValue($value, $format, $type)
@@ -81,11 +77,11 @@ class Formatter extends \yii\i18n\Formatter
         }
         if ($timeZone != null) {
             if ($timestamp instanceof \DateTimeImmutable) {
-                $timestamp = $timestamp->setTimezone(new DateTimeZone($timeZone));
+                $timestamp = $timestamp->setTimezone(new \DateTimeZone($timeZone));
             } else {
-                $timestamp->setTimezone(new DateTimeZone($timeZone));
+                $timestamp->setTimezone(new \DateTimeZone($timeZone));
             }
         }
-        return $this->dateObject->date($format, $timestamp->getTimestamp());
+        return $this->dateTime->date($format, $timestamp->getTimestamp());
     }
 }
