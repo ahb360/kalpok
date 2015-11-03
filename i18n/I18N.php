@@ -10,17 +10,9 @@ class I18N extends \yii\i18n\I18N
 {
     public $languages;
 
-    protected $activeLanguage;
-
     private $farsiNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
     private $arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
     private $englishNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-
-    public function __construct(Language $language, $config = [])
-    {
-        $this->activeLanguage = $language;
-        parent::__construct($config);
-    }
 
     public function isMultiLanguage()
     {
@@ -45,10 +37,10 @@ class I18N extends \yii\i18n\I18N
      */
     public function translateNumber($number)
     {
-        if ($this->activeLanguage->code == 'fa') {
+        if (Yii::$app->language == 'fa') {
             $number = str_replace($this->arabicNumbers, $this->farsiNumbers, $number);
             return str_replace($this->englishNumbers, $this->farsiNumbers, $number);
-        }elseif ($this->activeLanguage->code == 'ar') {
+        }elseif (Yii::$app->language == 'ar') {
             $number = str_replace($this->farsiNumbers, $this->arabicNumbers, $number);
             return str_replace($this->englishNumbers, $this->arabicNumbers, $number);
         }else{
