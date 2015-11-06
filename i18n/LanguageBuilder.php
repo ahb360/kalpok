@@ -7,11 +7,11 @@ class LanguageBuilder
     {
         switch ($code) {
             case 'fa':
-                return new Language('fa', 'فارسی', 'rtl');
+                return new Language('fa', 'فارسی', Language::DIRECTION_RTL);
             case 'en':
-                return new Language('en', 'انگلیسی', 'ltr');
+                return new Language('en', 'انگلیسی', Language::DIRECTION_LTR);
             case 'ar':
-                return new Language('ar', 'عربی', 'rtl');
+                return new Language('ar', 'عربی', Language::DIRECTION_RTL);
             default:
                 throw new \Exception("Unknown Language Code: $code");
         }
