@@ -2,8 +2,9 @@
 namespace kalpok\file\models;
 
 use Yii;
-use kalpok\helpers\FileHelper;
+use kalpok\helpers\Inflector;
 use yii\helpers\StringHelper;
+use kalpok\helpers\FileHelper;
 use yii\validators\FileValidator;
 use yii\base\InvalidParamException;
 use kalpok\behaviors\TimestampBehavior;
@@ -169,6 +170,6 @@ class File extends \yii\db\ActiveRecord
 
     private function prepareFileName()
     {
-        return time().'-'.FileHelper::slug($this->resource->name);
+        return time().'-'.Inflector::slug($this->resource->name);
     }
 }
