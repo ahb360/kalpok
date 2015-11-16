@@ -3,7 +3,7 @@ namespace kalpok\validators;
 
 use yii;
 use yii\validators\Validator;
-use aca\common\helpers\Utility;
+use kalpok\helpers\Utility;
 
 class FarsiCharactersValidator extends Validator
 {
