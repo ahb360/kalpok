@@ -24,4 +24,23 @@ class Utility
         }
         return $list;
     }
+
+    /**
+     * makes data ready for Selectize widget
+     * @param  array $models
+     * @param  string $label field to be used as option labels in rendered field
+     * @param  string $value field to be used as data sent to server when an option is selected
+     * @return array
+     */
+    public static function makeReadyForSelectize($models, $label, $value)
+    {
+        $items = [];
+        foreach ($models as $model) {
+            $items[] = [
+                $label => $model->$label,
+                $value => $model->$value
+            ];
+        }
+        return $items;
+    }
 }
