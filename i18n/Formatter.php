@@ -11,7 +11,7 @@ class Formatter extends \yii\i18n\Formatter
 
     private $_intlLoaded = false;
 
-    public function __construct(Calendar $calendar, DateTime $dateTime, I18n $i18n, $config = [])
+    public function __construct(Calendar $calendar, DateTime $dateTime, I18N $i18n, $config = [])
     {
         $this->calendar = $calendar;
         $this->dateTime = $dateTime;

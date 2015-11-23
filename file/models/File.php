@@ -4,7 +4,7 @@ namespace kalpok\file\models;
 use Yii;
 use kalpok\helpers\Inflector;
 use yii\helpers\StringHelper;
-use kalpok\helpers\FileHelper;
+use yii\helpers\FileHelper;
 use yii\validators\FileValidator;
 use yii\base\InvalidParamException;
 use kalpok\behaviors\TimestampBehavior;
