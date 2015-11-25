@@ -1,0 +1,7 @@
+{
+    "name": "gallery",
+    "dependencies": {
+        "owlcarousel": "*",
+        "magnific-popup": "*"
+    }
+}
