@@ -7,15 +7,6 @@ class SluggableBehavior extends \yii\behaviors\SluggableBehavior
 {
     public $language;
 
-    private function setLanguage()
-    {
-        if ($this->owner->hasAttribute('language')) {
-            $this->language = $this->owner->language;
-        }else{
-            $this->language = \Yii::$app->language;
-        }
-    }
-
     public function getValue($event)
     {
         $this->setLanguage();
@@ -61,5 +52,14 @@ class SluggableBehavior extends \yii\behaviors\SluggableBehavior
             }
         }
         return $slug;
+    }
+
+    private function setLanguage()
+    {
+        if ($this->owner->language) {
+            $this->language = $this->owner->language;
+        }else{
+            $this->language = \Yii::$app->language;
+        }
     }
 }
