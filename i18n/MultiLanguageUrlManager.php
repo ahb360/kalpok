@@ -7,6 +7,18 @@ class MultiLanguageUrlManager extends \yii\web\UrlManager
 {
     public $ruleConfig = ['class' => '\kalpok\i18n\MultiLanguageUrlRule'];
 
+    public function init()
+    {
+        $this->addHomePageRules();
+        parent::init();
+    }
+
+    private function addHomePageRules()
+    {
+        $this->rules[''] = '';
+        $this->rules[''] = 'site/index';
+    }
+
     public function createUrl($params)
     {
         $params = (array) $params;
