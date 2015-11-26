@@ -1,64 +1,63 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use aca\common\helpers\Utility;
-use aca\backend\widgets\box\Box;
-use aca\fileManager\widgets\uploader\SingleImageUpload;
+use kalpok\helpers\Utility;
+use themes\admin360\widgets\Panel;
+use kalpok\file\widgets\singleupload\SingleImageUpload;
 ?>
-<?php Box::begin([
-    'title' => 'اطلاعات عکس',
+<?php Panel::begin([
+    'title' => ($model->isNewRecord) ? 'افزودن عکس جدید' : 'ویرایش عکس',
 ]) ?>
     <div class="gallery-form">
         <?php
-        /*
-            when loading form via ajax, for cliendside and ajax validation to work,
-            specifying form id is MANDATORY!
-        */
         $form = ActiveForm::begin([
             'enableClientValidation' => true,
-            'options' => ['enctype' => 'multipart/form-data'],
-            'id' => 'gallery-form'
+            'options' => ['enctype' => 'multipart/form-data', 'class'=>'gallery-image']
         ]);
         ?>
-        <?= Html::activeInput('hidden', $model, "galleryId") ?>
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-            <?php
-                echo SingleImageUpload::widget(
-                    [
-                        'model' => $model,
-                        'group' => 'gallery_image',
-                        'folderName' => 'gallery',
-                        'label' => ''
-                    ]
-                );
-            ?>
+            <div class="col-md-6">
+                <?= Html::activeHiddenInput($model, 'galleryId') ?>
+                <?= $form->field($model, 'title')->textInput(
+                    ['maxlength' => 255, 'class'=>'form-control input-xlarge']
+                ) ?>
+                <?= $form->field($model, 'link')->textInput([
+                    'maxlength' => 512,
+                    'class' => 'form-control input-xlarge',
+                    'style' => 'direction:ltr',
+                ]) ?>
+                <?= $form->field($model, 'description')->textarea(
+                    ['rows' => 6, 'class'=>'form-control input-xlarge']
+                ) ?>
+                <?= $form->field($model, 'order')
+                    ->dropDownList(
+                        Utility::listNumbers(1, 20),
+                        ['class' => 'form-control input-medium']
+                    )
+                ?>
+            </div>
+            <div class="col-md-6">
+                <?=
+                    Html::submitButton(
+                        '<i class="fa fa-save"></i> ذخیره',
+                        [
+                            'style' => 'width: 100%',
+                            'class' => 'btn btn-success submit'
+                        ]
+                    )
+                ?>
+                <?php
+                    echo SingleImageUpload::widget(
+                        [
+                            'model' => $model,
+                            'group' => 'gallery_image',
+                            'folderName' => 'gallery',
+                            'label' => ''
+                        ]
+                    );
+                ?>
             </div>
         </div>
-        <hr>
-        <?= $form->field($model, 'title')->textInput(
-            ['maxlength' => 255, 'class'=>'form-control input-xlarge']
-        ) ?>
-        <?= $form->field($model, 'description')->textarea(
-            ['rows' => 6, 'class'=>'form-control input-xlarge']
-        ) ?>
-        <?= $form->field($model, 'link')->textInput([
-            'maxlength' => 512,
-            'class' => 'form-control input-xlarge',
-            'style' => 'direction:ltr',
-        ]) ?>
-        <?= $form->field($model, 'order')
-            ->dropDownList(
-                Utility::listNumbers(1, 20),
-                ['class' => 'form-control input-medium']
-            )
-        ?>
         <?php ActiveForm::end(); ?>
     </div>
-<?php Box::end();
-
-$this->registerJs('
-    $(document).ready(function () {
-        $(".modal-inner").trigger("pageReady");
-    });
-');
+<?php Panel::end();

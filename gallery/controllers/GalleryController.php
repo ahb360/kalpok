@@ -60,7 +60,7 @@ class GalleryController extends \yii\web\Controller
             array(
                 'status' => 'renderEmptyForm',
                 'content' => $this->renderAjax(
-                    '@aca/gallery/views/_form.php',
+                    '@kalpok/gallery/views/_form.php',
                     array('model'=>$model)
                 )
             )
@@ -85,7 +85,7 @@ class GalleryController extends \yii\web\Controller
             array(
                 'status' => 'renderEmptyForm',
                 'content' => $this->renderAjax(
-                    '@aca/gallery/views/_form.php',
+                    '@kalpok/gallery/views/_form.php',
                     array('model'=>$model)
                 )
             )
