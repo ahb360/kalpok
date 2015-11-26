@@ -8,6 +8,7 @@ class ThumbnailColumn extends DataColumn
 {
     public $group;
     public $label = '';
+    public $preset = 'gridview-thumb';
 
     public function init()
     {
@@ -18,7 +19,7 @@ class ThumbnailColumn extends DataColumn
         $this->filter = false;
         $this->value = function ($data) {
             $thumb = $data->getFile($this->group);
-            return (null == $thumb) ?: $thumb->getUrl('gridview-thumb');
+            return (null == $thumb) ?: $thumb->getUrl($this->preset);
         };
     }
 }
