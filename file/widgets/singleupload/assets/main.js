@@ -1,7 +1,6 @@
 $(document).ready( function() {
-    // file and image ajax delete
     var deleteUrl = $('input[name="delete-url"]').val();
-    $('.file-delete').on('click', function(){
+    $(document).on('click', '.file-delete', function(){
         if (confirm('آیا از حذف این فایل اطمینان دارید؟')) {
             var btn = $(this);
             $.ajax({
