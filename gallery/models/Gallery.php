@@ -48,7 +48,7 @@ class Gallery extends \yii\db\ActiveRecord
     public function getImages()
     {
         return $this->hasMany(Image::className(), ['galleryId' => 'id'])
-            ->orderBy(['order' => SORT_DESC]);
+            ->orderBy(['order' => SORT_ASC]);
     }
 
     public static function loadByHandle($handle)
