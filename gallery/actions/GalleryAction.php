@@ -58,7 +58,7 @@ class GalleryAction extends \yii\base\Action
             $gallery = Gallery::createForHandle($this->handle);
         }
         return $this->controller->render(
-            '@aca/gallery/views/gallery.php',
+            'gallery',
             [
                 'gallery' => $gallery
             ]
