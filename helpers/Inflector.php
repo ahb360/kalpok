@@ -18,7 +18,7 @@ class Inflector extends \yii\helpers\Inflector
         $string = mb_strtolower( trim( $string ), 'UTF-8' );
         $string = str_replace( array_keys($special_cases), array_values( $special_cases), $string );
         $string = preg_replace( $accents_regex, '$1', htmlentities( $string, ENT_QUOTES, 'UTF-8' ) );
-        $string = preg_replace("/[^a-zا-ی۰-۹0-9]/u", "{$replacement}", $string);
+        $string = preg_replace("/[^a-zآ-ی۰-۹0-9]/u", "{$replacement}", $string);
         $string = preg_replace("/[{$replacement}]+/u", "{$replacement}", $string);
         return $string;
     }
