@@ -98,4 +98,10 @@ class FileBehavior extends Behavior
         $files = $this->getFiles($group);
         return (!empty($files)) ? $files[0] : null;
     }
+
+    public function hasFile($group)
+    {
+        $file = $this->getFile($group);
+        return isset($file);
+    }
 }
