@@ -7,7 +7,7 @@ GalleryCrudAsset::register($this);
 ?>
 <div class="gallery-index">
     <?= Button::widget([
-        'label' => 'افزودن عکس',
+        'label' => 'عکس جدید',
         'icon' => 'plus',
         'type' => 'success',
         'url' => ['/gallery/add-image', 'galleryId' => $gallery->id],
