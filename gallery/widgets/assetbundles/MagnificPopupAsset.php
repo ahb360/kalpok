@@ -5,7 +5,7 @@ use yii\web\AssetBundle;
 
 class MagnificPopupAsset extends AssetBundle
 {
-    public $sourcePath = '@aca/gallery/widgets/assets/magnific-popup';
+    public $sourcePath = '@kalpok/gallery/widgets/assets/magnific-popup';
     public $js = [
         'dist/jquery.magnific-popup.min.js',
     ];

@@ -1,6 +1,6 @@
 <?php
 use yii\web\View;
-use aca\common\helpers\Html;
+use yii\helpers\Html;
 use kalpok\gallery\widgets\assetbundles\MagnificPopupAsset;
 
 MagnificPopupAsset::register($this);

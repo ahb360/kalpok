@@ -5,7 +5,7 @@ use yii\web\AssetBundle;
 
 class OwlCarouselAsset extends AssetBundle
 {
-    public $sourcePath = '@aca/gallery/widgets/assets/owlcarousel';
+    public $sourcePath = '@kalpok/gallery/widgets/assets/owlcarousel';
     public $js = [
         'owl-carousel/owl.carousel.min.js',
     ];
