@@ -6,7 +6,6 @@ use kalpok\gallery\widgets\assetbundles\OwlCarouselAsset;
 OwlCarouselAsset::register($this);
 ?>
 <div class="simple-gallery-widget widget" style="direction:ltr">
-    <div id="gallery-<?php echo $this->context->id ?>" class="gallery-main-container"></div>
     <div class="carousel-container">
         <div id="owl-<?php echo $this->context->id ?>" class="owl-carousel">
             <?php  foreach ($images as $image) : ?>
@@ -30,6 +29,7 @@ OwlCarouselAsset::register($this);
             <a class="btn btn-default next"><i class="fa fa-chevron-left"></i></a>
         </div>
     </div>
+    <div id="gallery-<?php echo $this->context->id ?>" class="gallery-main-container"></div>
 </div>
 
 <?php
