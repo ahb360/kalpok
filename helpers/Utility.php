@@ -43,4 +43,18 @@ class Utility
         }
         return $items;
     }
+
+    public static function makeExcerpt($string, $length = 200, $endingChars = '...')
+    {
+        if(strlen($string) > $length) {
+            $excerpt   = substr($string, 0, $length - 3);
+            $lastSpace = strrpos($excerpt, ' ');
+            $excerpt   = substr($excerpt, 0, $lastSpace);
+            $excerpt  .= ' '.$endingChars;
+        } else {
+            $excerpt = $string;
+        }
+            
+        return $excerpt;
+    }
 }

@@ -3,7 +3,6 @@ namespace kalpok\i18n;
 
 use Yii;
 use DateTimeZone;
-use aca\common\helpers\Utility;
 use yii\helpers\FormatConverter;
 
 class I18N extends \yii\i18n\I18N
@@ -54,7 +53,7 @@ class I18N extends \yii\i18n\I18N
         $fa_num = array("۰","۱","۲","۳","۴","۵","۶","۷","۸","۹");
         $ar_num = array("٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩");
         $ar_ch = array("ي", "ك", "دِ", "بِ", "زِ", "ذِ", "ِشِ", "ِسِ", "ى",'ئ','ؤ','ة','أ','إ');
-        $fa_ch = array("ی", "ک", "د", "ب", "ز", "ذ", "ش", "س", "ی",'ی','و','ه','ا','ا');
+        $fa_ch = array("ی", "ک", "د", "ب", "ز", "ذ", "ش", "س", "ی",'ئ','و','ه','ا','ا');
 
         $input = str_replace($ar_num, $fa_num, $input);
         $input = str_replace($ar_ch, $fa_ch, $input);
