@@ -15,7 +15,6 @@ class MultiLanguageUrlManager extends \yii\web\UrlManager
 
     private function addHomePageRules()
     {
-        $this->rules[''] = '';
         $this->rules[''] = 'site/index';
     }
 
@@ -36,6 +35,6 @@ class MultiLanguageUrlManager extends \yii\web\UrlManager
             $params['language'] = Yii::$app->language;
         }
 
-        return parent::createAbsoluteUrl($params);
+        return parent::createAbsoluteUrl($params, $scheme);
     }
 }
