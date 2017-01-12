@@ -8,7 +8,7 @@ use yii\base\InvalidParamException;
 
 class JalaliDateToTimestamp extends Validator
 {
-    public $format;
+    public $format = "Y/m/d|";
     public $hourAttr;
     public $minuteAttr;
     public $secondAttr;
@@ -26,9 +26,6 @@ class JalaliDateToTimestamp extends Validator
     public function init()
     {
         parent::init();
-        if ($this->format === null) {
-            $this->format = "Y/m/d|";
-        }
         if ($this->message === null) {
             $format = $this->dateTime->date($this->format);
             $this->message = "تاریخ باید در فرمت '{$format}' باشد";

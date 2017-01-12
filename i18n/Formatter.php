@@ -9,7 +9,7 @@ class Formatter extends \yii\i18n\Formatter
     protected $dateTime;
     protected $i18n;
 
-    private $_intlLoaded = false;
+    private $intlLoaded = false;
 
     public function __construct(Calendar $calendar, DateTime $dateTime, I18N $i18n, $config = [])
     {
@@ -22,7 +22,11 @@ class Formatter extends \yii\i18n\Formatter
     public function init()
     {
         parent::init();
-        $this->_intlLoaded = extension_loaded('intl');
+        $this->intlLoaded = extension_loaded('intl');
+        if ($this->intlLoaded && $this->_calendar->code == 'jalali') {
+            $this->locale = 'fa_IR@calendar=persian';
+            $this->calendar = \IntlDateFormatter::TRADITIONAL;
+        }
     }
 
     public function asLanguage($value)
@@ -33,9 +37,17 @@ class Formatter extends \yii\i18n\Formatter
         return LanguageBuilder::build($value)->title;
     }
 
+    public function asFarsiNumber($value)
+    {
+        if ($value === null)
+            return $this->nullDisplay;
+
+        return $this->i18n->translateNumber($value);
+    }
+
     public function asDate($value, $format = null)
     {
-        if ($this->_calendar->code == 'gregorian') {
+        if ($this->intlLoaded || $this->_calendar->code == 'gregorian') {
             return parent::asDate($value, $format);
         }
         if ($format === null) {
@@ -46,21 +58,13 @@ class Formatter extends \yii\i18n\Formatter
 
     public function asDatetime($value, $format = null)
     {
-        if ($this->_calendar->code == 'gregorian') {
+        if ($this->intlLoaded || $this->_calendar->code == 'gregorian') {
             return parent::asDatetime($value, $format);
         }
         if ($format === null) {
             $format = $this->datetimeFormat;
         }
         return $this->formatDateTimeValue($value, $format, 'datetime');
-    }
-
-    public function asFarsiNumber($value)
-    {
-        if ($value === null)
-            return $this->nullDisplay;
-
-        return $this->i18n->translateNumber($value);
     }
 
     private function formatDateTimeValue($value, $format, $type)
