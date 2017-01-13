@@ -91,7 +91,7 @@ class File extends \yii\db\ActiveRecord
     public function getUploadFolder()
     {
         $directory = $this->isImage ? 'images' : 'files';
-        return Yii::getAlias('@app') . '/uploads/' . $directory
+        return Yii::getAlias('@uploads') . '/' . $directory
             . '/' . $this->folderName
             . '/' . strtolower(StringHelper::basename($this->modelClassName))
             . '/' . date('Y', $this->createdAt)
