@@ -2,7 +2,7 @@
 namespace kalpok\validators;
 
 use Yii;
-use kalpok\i18n\DateTime;
+use extensions\i18n\DateTime;
 use yii\validators\Validator;
 use yii\base\InvalidParamException;
 
