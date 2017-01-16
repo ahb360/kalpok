@@ -2,8 +2,7 @@
 namespace kalpok\behaviors;
 
 use Yii;
-use kalpok\helpers\Inflector;
-use yii\validators\UniqueValidator;
+use core\helpers\Inflector;
 
 class SluggableBehavior extends \yii\behaviors\SluggableBehavior
 {

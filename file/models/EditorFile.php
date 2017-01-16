@@ -3,7 +3,6 @@ namespace kalpok\file\models;
 
 use yii;
 use yii\web\UploadedFile;
-use kalpok\helpers\FileHelper;
 
 class EditorFile extends File
 {

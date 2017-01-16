@@ -2,9 +2,9 @@
 namespace kalpok\file\models;
 
 use Yii;
-use kalpok\helpers\Inflector;
-use yii\helpers\StringHelper;
+use core\helpers\Inflector;
 use yii\helpers\FileHelper;
+use yii\helpers\StringHelper;
 use yii\validators\FileValidator;
 use yii\base\InvalidParamException;
 use kalpok\behaviors\TimestampBehavior;
