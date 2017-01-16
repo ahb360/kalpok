@@ -1,7 +1,0 @@
-{
-  	"directory": "assets",
-  	"json": "bower.json",
-  	"scripts": {
-        "postinstall": "rm -rf assets/jquery"
-    }
-}
