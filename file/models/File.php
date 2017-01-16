@@ -7,7 +7,6 @@ use yii\helpers\FileHelper;
 use yii\helpers\StringHelper;
 use yii\validators\FileValidator;
 use yii\base\InvalidParamException;
-use kalpok\behaviors\TimestampBehavior;
 
 class File extends \yii\db\ActiveRecord
 {
@@ -21,7 +20,7 @@ class File extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            TimestampBehavior::className()
+            'core\behaviors\TimestampBehavior'
         ];
     }
 
